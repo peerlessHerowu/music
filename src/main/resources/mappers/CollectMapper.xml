@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.CollectDao">
+
+
+    <update id="saveCollectSong">
+         insert into collect (songId, singerId,recordId,collectTime,lid,uid)
+          values (#{songId},#{singerId},#{recordId},#{collectTime},#{lid},#{uid})
+    </update>
+
+    <update id="increaseNum" >
+         update mylist set  songNum =  songNum+1 where id=#{lid} and uid = #{uid}
+    </update>
+    <update id="updateIdBySongId">
+        ALTER  TABLE  collect DROP id;
+        ALTER  TABLE  collect ADD id mediumint(6) PRIMARY KEY NOT NULL AUTO_INCREMENT FIRST
+    </update>
+    <delete id="deleteCollectSongBySongId">
+        DELETE FROM  collect WHERE songId=#{songId}
+    </delete>
+    <select id="findSameSong" resultType="com.example.entity.Collect">
+         select * from collect where songId = #{songId} and lid = #{lid} and uid = #{uid}
+    </select>
+    <select id="findCollectedSong" resultType="com.example.entity.Song">
+         select * from music163_song_avail s where s.songId in
+         (select songId from collect c
+          where c.uid = #{uid} and c.lid = #{id})
+    </select>
+    <select id="countCollectedSong" parameterType="com.example.entity.MyList" resultType="java.lang.Integer">
+        select  count(*) from  collect where lid=#{id} and uid = #{uid}
+    </select>
+    <select id="findCollectSongBySongId" resultType="com.example.entity.UserPlayMusic">
+            select * from collect where songId = #{songId}
+    </select>
+</mapper>

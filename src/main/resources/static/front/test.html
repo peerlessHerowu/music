@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>个人博客系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/plugins/layui/css/layui.css" media="all">
+
+    <script>
+        /^http(s*):\/\//.test(location.href) || alert('请先部署到 localhost 下再访问');
+    </script>
+
+
+</head>
+<body>
+
+<div class="share_top_style">
+    <a href="javascript:void(0)" class="" onClick="dofristshare('sina')"><img src="../images/logo.jpg" alt="新浪微博"></a>
+    <a href="javascript:void(0)" class="" onClick="dofristshare('tx')"><img src="../images/logo.jpg" alt="腾讯微博"></a>
+    <a href="javascript:void(0)" class="" onClick="dofristshare('rr')"><img src="../images/logo.jpg" alt="人人网"></a>
+    <a href="javascript:void(0)" class="" onClick="dofristshare('qzone')"><img src="../images/Dancing%20With%20Your%20Ghost.mp3" alt="QQ空间"></a>
+    <a href="javascript:void(0)" class="" onClick="dofristshare('douban')"><img src="../images/logo.jpg" alt="豆瓣"></a>
+</div>
+
+
+<script src="/plugins/layui/layui.js"></script>
+<script src="/plugins/util.js"></script>
+
+<script>
+    function dofristshare(type) {
+        var title = encodeURIComponent("新年快乐,马年吉祥");
+        var link = encodeURIComponent('http://www.baidu.com');
+        var image = encodeURIComponent('http://www.baidu.com/img/bdlogo.gif');
+
+        if (type == "sina") {
+            window.open("http://v.t.sina.com.cn/share/share.php?url=" + link + "&title=" + title + "&content=utf8&pic=" + image);
+        }
+        if (type == "tx") {
+            window.open("http://v.t.qq.com/share/share.php?url=" + link + "&title=" + title + "&pic=" + image);
+        }
+        if (type == "qzone") {
+            window.open("http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=" + link + "&title=" + title  + "&pics=" + image);
+        }
+        if (type == "rr") {
+            window.open("http://widget.renren.com/dialog/share?resourceUrl=" + link + "&title=" + title  + "&pic=" + image);
+        }
+        if (type == "douban") {
+            window.open("http://www.douban.com/recommend/?url=" + link + "&title=" + title + "&image=" + image);
+        }
+
+        return false;
+
+    }
+
+
+</script>
+</body>
+</html>
+
+

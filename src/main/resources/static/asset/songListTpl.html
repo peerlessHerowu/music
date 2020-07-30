@@ -1,0 +1,16 @@
+<div class="r_play_list clearfix">
+    {{#  layui.each(d, function(index, item){ }}
+    <div class="l_play_list"><div class="list_img">
+        <a href="/playList?id={{item.listId}}">
+            <img src="{{item.imgSrc}}">
+        </a>
+    </div>
+        <div class="list_name">
+            <a href="/playList?id={{item.listId}}">
+                {{item.title}}
+            </a>
+        </div>
+    </div>
+
+    {{#  }); }}
+</div>

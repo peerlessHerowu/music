@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.SongWordDao">
+
+
+
+    <select id="findWordBySongId" resultType="com.example.entity.SongWord">
+         select * from music163_song_words where songId=#{songId}
+    </select>
+</mapper>

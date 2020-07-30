@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
+</head>
+
+
+<body>
+
+<script>
+    wx.config({
+        debug: false, // 是否开启调试模式
+        appId: appid, //appid
+        timestamp: timestamp, // 时间戳
+        nonceStr: noncestr, // 随机字符串
+        signature: signature, // 签名
+        jsApiList: [
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'onMenuShareQQ',
+            'onMenuShareWeibo',
+            'onMenuShareQZone'
+        ] // 需要使用的JS接口列表
+    })
+</script>
+</body>
+</html>

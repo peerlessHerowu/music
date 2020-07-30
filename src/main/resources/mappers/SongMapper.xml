@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.SongDao">
+
+
+    <select id="findByKey" parameterType="java.lang.String" resultType="com.example.entity.Song">
+        select * from music163_song_avail where songTitle like #{songTitle}
+    </select>
+    <select id="countByKey" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from music163_song_avail where songTitle like #{songTitle}
+    </select>
+
+
+    <select id="findBySingerKey" resultType="com.example.entity.Song">
+        select * from music163_song_avail where singerName like #{singerName}
+    </select>
+    <select id="countBySingerKey" resultType="java.lang.Integer">
+         select count(*) from music163_song_avail where singerName like #{singerName}
+    </select>
+
+
+    <select id="findByRecordKey" resultType="com.example.entity.Song">
+         select * from music163_song_avail where recordName like #{recordName}
+    </select>
+    <select id="countByRecordKey" resultType="java.lang.Integer">
+          select count(*) from music163_song_avail where recordName like #{recordName}
+    </select>
+
+    <select id="findBysongId" resultType="com.example.entity.Song">
+
+        <choose>
+            <when test="songIds != null and songIds.size() > 0">
+                select * from music163_song_avail where songId in
+                <foreach collection="songIds" item="songId" open="(" close=")" separator=",">
+                    #{songId}
+                </foreach>
+            </when>
+            <otherwise>
+                select * from music163_song_avail where songId = -1
+            </otherwise>
+        </choose>
+
+
+    </select>
+
+</mapper>

@@ -1,0 +1,88 @@
+.container{
+    padding-bottom: 66px;
+
+}
+
+body{
+}
+
+/*播放器*/
+
+.audio_f{
+    height:40px ;
+    width: 1170px;
+    position: fixed;
+    bottom: 0;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+.lock_icon{
+    position: fixed;
+    bottom: 40px;
+    left: 1314px
+}
+.FadeOutAudio {
+    opacity: 1;
+}
+
+.FadeOutAudio.fadeout{
+    -webkit-transition: opacity 1.5s;
+    -moz-transition: opacity 1.5s;
+    -ms-transition: opacity 1.5s;
+    -o-transition: opacity 1.5s;
+    transition: opacity 1.5s;
+    opacity: 0;
+
+}
+
+.FadeInAudio {
+    opacity: 0;
+}
+
+.FadeInAudio.fadein{
+    -webkit-transition: opacity 1.5s;
+    -moz-transition: opacity 1.5s;
+    -ms-transition: opacity 1.5s;
+    -o-transition: opacity 1.5s;
+    transition: opacity 1.5s;
+    opacity: 1;
+}
+
+/*歌单信息*/
+.list_title span{
+    font-size: 22px;
+    font-weight: 500;
+    border-bottom:  1px solid red;
+    padding: 20px 10px 10px 0px  ;
+}
+.list_title{
+    margin-bottom: 20px;
+}
+
+.list_create ,.list_create_time,.play_num{
+    font-size: 18px;
+    font-weight: 400;
+    padding-top: 10px;
+
+}
+.play_num{
+    padding-bottom: 20px;
+}
+
+/*按钮*/
+.oper_list{
+    display: flex;
+    width: 400px;
+    justify-content: space-between;
+}
+
+/*介绍*/
+.intro{
+    font-family: "楷体","楷体_GB2312";
+    font-size: 25px;
+}
+
+
+
+

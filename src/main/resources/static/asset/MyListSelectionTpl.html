@@ -1,0 +1,32 @@
+<ul class="my_list">
+    {{#  layui.each(d, function(index, item){ }}
+    <li class="my_list_item">
+        {{ item.listName }}
+
+    </li>
+    {{#  }); }}
+    {{#  if(d.length === 0){ }}
+    无数据
+    {{#  } }}
+</ul>
+
+<style>
+    .active{
+        background-color: rgb(211, 211, 211);
+    }
+    .over{
+        background-color:rgb(230,230,230) ;
+    }
+    .my_list{
+        margin: 10px;
+    }
+    /*每一行样式*/
+    .my_list_item{
+        border: solid #eeee ;
+        font-size: 25px;
+        vertical-align: center;
+        font-weight: 400;
+        padding: 20px 10px;
+        margin: 20px 0;
+    }
+</style>

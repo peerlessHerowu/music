@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>悦享音乐</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../plugins/layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="../plugins/layuiadmin/style/login.css" media="all">
+    <script src="../js/util/jquery-3.4.1.min.js"></script>
+    <style>
+        .input-val {
+            width: 200px;
+            background: #ffffff;
+            height: 2.8rem;
+            padding: 0 2%;
+            border-radius: 5px;
+            border: none;
+            border: 1px solid rgba(0,0,0,.2);
+            font-size: 1.0625rem;
+        }
+        #canvas {
+            float: right;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="layadmin-user-login layadmin-user-display-show" id="LAY-user-login" style="display: none;">
+
+    <div class="layadmin-user-login-main">
+        <div class="layadmin-user-login-box layadmin-user-login-header">
+            <h2>欢迎使用悦享音乐！</h2>
+            <p id="last_result"></p>
+        </div>
+        <form class="layadmin-user-login-box layadmin-user-login-body layui-form" id="myform"  method="POST">
+            <div class="layui-form-item">
+                <label class="layadmin-user-login-icon layui-icon layui-icon-username" for="LAY-user-login-username"></label>
+                <input type="text" name="username" id="LAY-user-login-username" lay-verify="required" placeholder="用户名" class="layui-input">
+                <span id="span1"></span>
+            </div>
+            <div class="layui-form-item">
+                <label class="layadmin-user-login-icon layui-icon layui-icon-password" for="LAY-user-login-password"></label>
+                <input type="password" name="password" id="LAY-user-login-password" lay-verify="required" placeholder="密码" class="layui-input">
+                <span id="span2"></span>
+            </div>
+            <div class="form-group">
+<!--                <label>权限：</label>-->
+<!--                <label class="radio-inline"><input type="radio" name="userPower" value="管理员">管理员</label>-->
+<!--                                <label class="radio-inline"><input type="radio" name="userPower" value="普通用户">普通用户</label>-->
+                <!--                <label class="radio-inline"><input type="radio" name="userPower" value="前台">前台</label>-->
+
+            </div>
+            <div class="layui-form-item">
+              <div class="layui-row">
+                <div class="layui-col-xs7">
+<!--                    for="LAY-user-login-vercode"-->
+                  <label class="layadmin-user-login-icon layui-icon layui-icon-vercode" ></label>
+                  <input type="text" name="vercode" id="LAY-user-login-vercode" lay-verify="required" placeholder="请输入验证码" class="layui-input input-val">
+<!--                    <input type="text" value="" placeholder="请输入验证码（不区分大小写）" class="input-val">-->
+                </div>
+                <div class="layui-col-xs5">
+                  <div style="margin-left: 10px;">
+                      <canvas id="canvas" width="100" height="38"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="layui-form-item" style="margin-bottom: 20px;">
+                <input type="checkbox" name="remember" lay-skin="primary" title="记住密码">
+                <a href="#" class="layadmin-user-jump-change layadmin-link" style="margin-top: 7px;">忘记密码？</a>
+            </div>
+            <div class="layui-form-item">
+                <button  type="submit" id="userRegist" class="layui-btn layui-btn-fluid btn" lay-submit lay-filter="LAY-user-login-submit" >注 册</button>
+            </div>
+            <div class="layui-trans layui-form-item layadmin-user-login-other">
+                <a href="/front/login.html" class="layadmin-user-jump-change layadmin-link">已有账号？去登录</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="layui-trans layadmin-user-login-footer">
+
+        <p>© 2020 <a href="#" target="_blank">peerLessHero.jd.com</a></p>
+        <p>
+<!--            <span><a href="http://www.layui.com/admin/#get" target="_blank">获取授权</a></span>-->
+<!--            <span><a href="http://www.layui.com/admin/pro/" target="_blank">在线演示</a></span>-->
+<!--            <span><a href="http://www.layui.com/admin/" target="_blank">前往官网</a></span>-->
+        </p>
+    </div>
+
+
+</div>
+
+<script src="../plugins/layui/layui.js"></script>
+<script src="../plugins/layui/lay/modules/layer.js"></script>
+<script>
+    $(document).ready(function(){	// 在其中完成所有的jQuery代码
+        var show_num = [];
+        draw(show_num);
+        $("#canvas").on('click', function () {
+            draw(show_num);
+        })
+        $("#userRegist").click(
+            function () {
+                var val = $(".input-val").val().toLowerCase();
+                var num = show_num.join("");
+                if (val == '') {
+                    alert('请输入验证码！');
+                    return false;
+                } else if (val == num) {
+                    /*alert('提交成功！');
+                    $(".input-val").val('');
+                    draw(show_num);*/
+                    var username_val = $("#LAY-user-login-username").val();
+                    var password_val = $("#LAY-user-login-password").val();
+                    $.ajax({
+                        type: "POST",
+                        async: true,
+                        data: {"username": username_val, "password": password_val},
+                        dataType: "JSON",
+                        url: "/user/afterRegist",
+                        error: function (xhr, status) {
+                            alert("提交失败");
+                            window.location.refresh;
+                        },
+                        success: function (data) {
+                            if (data.code == 200) {
+                                // window.location.href = "/front/login.html";
+                                var num = 2; //倒计时的秒数
+                                var URL = "/front/login.html";
+                                var id = window.setInterval('doUpdate()', 1000);
+                                doUpdate = function() {
+                                    document.getElementById('last_result').innerHTML = '将在'+num+'秒后自动跳转到首页' ;
+                                    if(num == 0) {
+                                        window.clearInterval(id);
+                                        window.location = URL;
+                                    }
+                                    num --;
+                                }
+                            }
+                        }
+                    });
+                    return false;
+                } else {
+                    alert('验证码错误！请重新输入！');
+                    $(".input-val").val('');
+                    draw(show_num);
+                    return false;
+                }
+                return false;
+            });
+
+
+        function draw(show_num) {
+            var canvas_width = $('#canvas').width();
+            var canvas_height = $('#canvas').height();
+            var canvas = document.getElementById("canvas");//获取到canvas的对象，演员
+            var context = canvas.getContext("2d");//获取到canvas画图的环境，演员表演的舞台
+            canvas.width = canvas_width;
+            canvas.height = canvas_height;
+            var sCode = "A,B,C,E,F,G,H,J,K,L,M,N,P,Q,R,S,T,W,X,Y,Z,1,2,3,4,5,6,7,8,9,0";
+            var aCode = sCode.split(",");
+            var aLength = aCode.length;//获取到数组的长度
+
+            for (var i = 0; i <= 3; i++) {
+                var j = Math.floor(Math.random() * aLength);//获取到随机的索引值
+                var deg = Math.random() * 30 * Math.PI / 180;//产生0~30之间的随机弧度
+                var txt = aCode[j];//得到随机的一个内容
+                show_num[i] = txt.toLowerCase();
+                var x = 10 + i * 20;//文字在canvas上的x坐标
+                var y = 20 + Math.random() * 8;//文字在canvas上的y坐标
+                context.font = "bold 23px 微软雅黑";
+
+                context.translate(x, y);
+                context.rotate(deg);
+
+                context.fillStyle = randomColor();
+                context.fillText(txt, 0, 0);
+
+                context.rotate(-deg);
+                context.translate(-x, -y);
+            }
+            for (var i = 0; i <= 5; i++) { //验证码上显示线条
+                context.strokeStyle = randomColor();
+                context.beginPath();
+                context.moveTo(Math.random() * canvas_width, Math.random() * canvas_height);
+                context.lineTo(Math.random() * canvas_width, Math.random() * canvas_height);
+                context.stroke();
+            }
+            for (var i = 0; i <= 30; i++) { //验证码上显示小点
+                context.strokeStyle = randomColor();
+                context.beginPath();
+                var x = Math.random() * canvas_width;
+                var y = Math.random() * canvas_height;
+                context.moveTo(x, y);
+                context.lineTo(x + 1, y + 1);
+                context.stroke();
+            }
+        }
+
+        function randomColor() {//得到随机的颜色值
+            var r = Math.floor(Math.random() * 256);
+            var g = Math.floor(Math.random() * 256);
+            var b = Math.floor(Math.random() * 256);
+            return "rgb(" + r + "," + g + "," + b + ")";
+        }
+
+
+    });
+    // $(function(){
+    //     //失去焦点blur
+    //     var username_result = true;
+    //     var userpwd_result=true;
+    //     console.log($("#LAY-user-login-username").val())
+    //     // $("#LAY-user-login-username").blur(function(){
+    //     //     if($("#LAY-user-login-username").val() == ""){
+    //     //         $("#span1").html("用户名不能是空");
+    //     //         username_result = false;
+    //     //     }
+    //     //     else if(/^\w{6,30}$/.test($("#LAY-user-login-username").val()) ==false){
+    //     //         $("#span1").html("用户名格式错误!!");
+    //     //         console.log($("#LAY-user-login-username").val())
+    //     //         username_result = false;
+    //     //     }
+    //     //     else{
+    //     //         $("#span1").html("");
+    //     //         username_result = true;
+    //     //     }
+    //     // });
+    //     // $("#LAY-user-login-password").blur(function(){
+    //     //     if($("#LAY-user-login-password").val() == ""){
+    //     //         $("#span2").html("密码不能为空");
+    //     //         userpwd_result = false;
+    //     //     }
+    //     //     else if(/^\w{6,30}$/.test($("#LAY-user-login-password").val()) ==false){
+    //     //         $("#span2").html("密码格式错误!!");
+    //     //         console.log($("#LAY-user-login-username").val())
+    //     //         userpwd_result = false;
+    //     //     }
+    //     //     else{
+    //     //         $("#span1").html("");
+    //     //         userpwd_result = true;
+    //     //     }
+    //     // });
+    //     //表单提交的时候
+    //     $("#myform").submit(function(){
+    //         if(username_result == true && userpwd_result == true){
+    //             var username_val=$("#LAY-user-login-username").val();
+    //             var password_val=$("#LAY-user-login-password").val();
+    //             $.ajax({
+    //                 type:"post",
+    //                 async:true,
+    //                 data:{"username":username_val,"password":password_val},
+    //                 dataType:"text",
+    //                 url:"/user/afterLogin",
+    //                 error:function(xhr,status){
+    //                     //$("#last_result").html("用户名或密码有误!!");
+    //                 },
+    //                 success:function(data){
+    //                     console.log(data=="登陆成功")
+    //
+    //                     if(data.code==200)
+    //                     {
+    //                         console.log(data=="登陆成功")
+    //                         window.location.href ="/front/index.html";
+    //                     }else{
+    //                         console.log(data)
+    //                         // window.location.href ="/login.html";
+    //                         $("#last_result").html("用户名或密码有误!!");
+    //                     }
+    //                     // $("#last_result").html("用户名或密码有误!!");
+    //                 }
+    //             });
+    //             return true;
+    //         }
+    //         else{
+    //             $("#last_result").html("用户名或密码格式有误!!");
+    //             return false;
+    //         }
+    //     });
+    // });
+
+        // var username_result = true;
+        // var userpwd_result=true;
+        // if(username_result == true && userpwd_result == true){
+        //
+        //
+        //     return true;
+        // }
+        // else{
+        //     $("#last_result").html("用户名或密码格式有误!!");
+        //     return false;
+        // }
+
+
+
+
+
+
+</script>
+</body>
+</html>

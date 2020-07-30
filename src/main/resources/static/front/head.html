@@ -1,0 +1,62 @@
+<div class="head container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <a class="navbar-brand" id="myMusicLogo" href="/">悦享音乐</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="div2 collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li onclick="change_tbg(this) " class="active"><a href="/">首页</a></li>
+            <li><a href="/front/allPlayList.html">歌单</a></li>
+<!--            <li><a href="#">歌手</a></li>-->
+            <!--                    <li><a href="#">Mv</a></li>-->
+            <li "><a href="/front/notLogin.html" id="my_music">我的音乐</a></li>
+            <!--                    <li class="dropdown">-->
+            <!--                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"-->
+            <!--                           aria-expanded="false">更多 <span class="caret"></span></a>-->
+            <!--                        <ul class="dropdown-menu">-->
+            <!--                            <li><a href="#">Action</a></li>-->
+            <!--                            <li><a href="#">Another action</a></li>-->
+            <!--                            <li><a href="#">Something else here</a></li>-->
+            <!--                            <li role="separator" class="divider"></li>-->
+            <!--                            <li><a href="#">Separated link</a></li>-->
+            <!--                            <li role="separator" class="divider"></li>-->
+            <!--                            <li><a href="#">One more separated link</a></li>-->
+            <!--                        </ul>-->
+            <!--                    </li>-->
+        </ul>
+
+        <!--                /search/searchAll-->
+
+        <form action="/front/search/searchResult.html" class="navbar-form navbar-left">
+            <div class="form-group">
+                <input type="text" name="keySearch" class="form-control" id="searchKey"
+                       placeholder="歌曲/歌手/歌单/专辑">
+            </div>
+            <button type="submit" id="searchAll">搜索</button>
+        </form>
+<!--        <div class="search bar7">-->
+<!--            <form action="/front/search/searchResult.html" >-->
+<!--                <input  type="text" name="keySearch" class="form-control" id="searchKey"-->
+<!--                        placeholder="歌曲/歌手/歌单/专辑">-->
+<!--                <button type="submit" id="searchAll" ></button>-->
+<!--            </form>-->
+<!--        </div>-->
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/front/login.html" id="lr">去登录</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="userName">未登录<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>请先登录哦</li>
+
+                </ul>
+            </li>
+        </ul>
+    </div><!-- /.navbar-collapse -->
+</div>
+<script src="../js/head.js"></script>
+
+<style type="text/css">
+    /*@import url("../css/head.css");*/
+</style>

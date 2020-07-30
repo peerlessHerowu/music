@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.PlayListDao">
+
+    <select id="findByListKey" parameterType="map" resultType="com.example.entity.PlayList">
+      select * from music163_list_avail
+      where title like #{title}
+      limit #{start},#{end}
+     </select>
+    <select id="countByListKey" resultType="java.lang.Integer">
+         select count(*) from music163_list_avail where title like #{title}
+    </select>
+
+<!--    根据歌单类名获得这一类的歌单-->
+    <select id="findBySortName" resultType="com.example.entity.PlayList">
+        select * from music163_list_avail where sortName=#{sortName} GROUP BY listId
+    </select>
+    <select id="countBySortName" resultType="java.lang.Integer">
+         select count(*) FROM (select *  from music163_list_avail WHERE sortName=#{sortName}  GROUP BY listId)as t
+    </select>
+
+<!--    根据歌单listId获得这一歌单的所有歌曲-->
+    <select id="findListByListId" resultType="com.example.entity.PlayList">
+                select * from music163_list_avail where listId=#{listId} GROUP BY listId
+    </select>
+    <select id="findSongsByListId" resultType="com.example.entity.PlayList">
+             select * from music163_list_avail where listId=#{listId}
+    </select>
+    <select id="countByListId" resultType="java.lang.Integer">
+      select count(*) FROM music163_list_avail WHERE listId=#{listId}
+    </select>
+</mapper>

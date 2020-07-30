@@ -1,0 +1,139 @@
+
+body{
+    font-size: 22px;
+
+}
+/*log样式*/
+#myMusicLogo{
+    font-size: 40px;
+    font-weight: 600;
+    font-family: "楷体", "楷体_GB2312";
+    letter-spacing: 3px;
+}
+
+/*搜索框和按钮样式*/
+.navbar-form{
+    display: flex;
+    align-items: center;
+    width: 380px;
+}
+
+
+.navbar-form button{
+    height: 35px;
+    line-height: 35px;
+    width: 55px;
+    border-radius: 30px;
+    background-color: antiquewhite;
+}
+.form-control{
+    width:300px;
+    height: 35px;
+    line-height: 35px;
+
+    border-radius:42px;
+    /*border:2px solid #324B4E;*/
+    background:#eeeeee;
+    transition:.3s linear;
+}
+.head {
+    padding: 10px 200px 10px 200px;
+}
+/*解决高度塌陷*/
+.clearfix:after,
+.clearfix:before
+{
+    content: " ";
+    display:table;
+}
+.clearfix:after
+{
+    clear:both;
+}
+
+/*导航部分*/
+.logo_img{
+    width: 90px;
+    height:200%;
+}
+
+.lun_center{
+    width: 1170px;
+    margin:auto;
+}
+
+.dropdown-menu li{
+    padding: 3px;
+
+
+}
+/*推荐的导航*/
+.recommend{
+    height: 488px;
+    padding-top: 50px;
+    width: 15%;
+    /*float: left;*/
+    display: inline-block;
+}
+.recommend li{
+    font-size: 17px;
+    border-radius: 24px;
+    margin-top: 28px;
+    margin-bottom: 28px;
+    text-align: center;
+}
+.recommend li a{
+    border-radius: 24px;
+}
+
+.f_rec_content{
+    margin-top: 40px;
+    width: 85%;
+    height: 1000px;
+    /*float: right;*/
+    display: inline-block;
+    float: right;
+}
+/*换一批*/
+.change{
+    margin-right: 38px;
+    float: right;
+}
+/*推荐的内容*/
+.rec_content{
+    height: 80px;
+    margin-left: 80px;
+    margin-top: 28px;
+    padding-right: 20px;
+    padding-top: 10px;
+}
+/*四列*/
+.l_play_list{
+    margin-left: 40px;
+    width: 140px;
+    height: 200px;
+    float: left;
+    /*background-color: red;*/
+}
+/*标题自动换行*/
+.l_play_list .list_name{
+    margin-top: 10px;
+    word-wrap: break-word;
+    word-break: normal;
+}
+/*四行*/
+.r_play_list{
+    background-colorcolor: red;
+    margin-bottom: 10px;
+}
+.pagination{
+}
+
+.switchPage{
+
+}
+.page_center{
+    text-align: center;
+    margin-top: 800px;
+}
+

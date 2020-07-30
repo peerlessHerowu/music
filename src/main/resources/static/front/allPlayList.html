@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>悦享音乐</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/index.css">
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+
+    <![endif]-->
+
+    <link rel="stylesheet" href="/plugins/layui/css/layui.css" media="all">
+    <script src="../js/util/jquery-3.4.1.min.js"></script>
+    <script src="../js/allPlayList.js"></script>
+
+
+</head>
+<body>
+<div class="bodys ">
+    <nav class="navbar navbar-inverse navbar-default" id="head">
+
+    </nav>
+
+    <div class="lun_center container">
+        <ul class="layui-nav" lay-filter="">
+            <li class="layui-nav-item layui-this" id="sort1">
+                <a href="">语种</a>
+                <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                    <div style="padding: 20px; background-color: #F2F2F2;">
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">华语</div></a>
+                                 </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">欧美</div></a>
+                                 </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">日语</div></a>
+                                 </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">韩语</div></a>
+                                 </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">粤语</div></a>
+                                 </div>
+                            </div>
+                            <div class="layui-col-md2">
+                            </div>
+                        </div>
+                    </div>
+                </dl>
+            </li>
+            <li class="layui-nav-item " id="sort2">
+                <a href="">风格</a>
+                <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                    <div style="padding: 20px; background-color: #F2F2F2;">
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">流行</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">摇滚</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">民谣</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">电子</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 800px;">舞曲</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">说唱</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">轻音乐</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">爵士</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">乡村</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">R&B/Soul</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">古典</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">民族</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">英伦</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">金属</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">朋克</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">蓝调</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">雷鬼</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">世界音乐</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">拉丁</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">New Age</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">古风</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">后摇</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 600px;">Bossa Nova</div></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </dl>
+
+            </li>
+            <li class="layui-nav-item" id="sort3">
+                <a href="javascript:;">场景</a>
+                <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                    <div style="padding: 20px; background-color: #F2F2F2;">
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 700px;">清晨</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">夜晚</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">学习</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">工作</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">午休</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">下午茶</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">地铁</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">驾车</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">运动</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">旅行</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">散步</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">酒吧</div></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </dl>
+
+            </li>
+            <li class="layui-nav-item" id="sort4">
+                <a href="javascript:;">情感</a>
+                <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                    <div style="padding: 20px; background-color: #F2F2F2;">
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 700px;">怀旧</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">清新</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">浪漫</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">伤感</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">治愈</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">放松</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">孤独</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">感动</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">兴奋</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">快乐</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">安静</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">思念</div></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </dl>
+            </li>
+            <li class="layui-nav-item" id="sort5">
+                <a href="javascript:;">主题</a>
+                <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                    <div style="padding: 20px; background-color: #F2F2F2;">
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header" style="font-size: 15px ;width: 700px;">影视原声</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">ACG</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">儿童</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">校园</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">游戏</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">70后</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">80后</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">90后</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">网络歌曲</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">KTV</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">经典</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">翻唱</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">吉他</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">钢琴</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">器乐</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">榜单</div></a>
+                                </div>
+                            </div>
+                            <div class="layui-col-md2">
+                                <div class="layui-card">
+                                    <a href="javascript:;" onclick="searchTishSort(this)"><div class="layui-card-header">00后</div></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </dl>
+            </li>
+        </ul>
+        <table class="layui-hide" id="thisSortTable" lay-filter="thisSortTable"></table>
+
+        <div style="display: none;" id="operateToolBar" >
+            <button type="button" class="layui-btn" lay-event="more" style="vertical-align: center">歌单歌曲</button>
+            <!--                添加-->
+<!--            <a class="layui-icon layui-icon-add-1" lay-event="add"></a>-->
+
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+
+<script src="/plugins/layui/layui.js"></script>
+<script src="/plugins/util.js"></script>
+
+<script>
+    $(function(){
+        $("#head").load("/front/head.html");
+
+    });
+    layui.use('element', function(){
+        var element = layui.element;
+
+        //…
+    });
+</script>
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

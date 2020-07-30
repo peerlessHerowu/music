@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.UserPlayMusicDao">
+
+<!--    保存最近播放-->
+    <update id="saveRecentPlayMusicBySongId">
+        insert into recentplaymusic(songId,playTime,uid) values (#{songId},#{playTime},#{uid})
+    </update>
+
+<!--    收藏歌单-->
+<!--    查询是否已经收藏过该歌单-->
+    <select id="findCollectListById" resultType="com.example.entity.MyCollectList">
+        select * from mycollectlist where listId = #{listId} and uid = #{uid}
+    </select>
+<!--    没有收藏过则收藏-->
+    <update id="saveCollectedList">
+        insert into mycollectlist(listId,title,playNum,sortName,imgSrc,createTime,createName,collectTime,uid)
+         values (#{listId},#{title},#{playNum},#{sortName},#{imgSrc},#{createTime},#{createName},#{collectTime},#{uid})
+    </update>
+<!--    获得所有收藏的歌单-->
+    <select id="countCollectList" resultType="int">
+        select  count(*) from  mycollectlist  where uid = #{uid}
+    </select>
+    <select id="getCollectListById" resultType="com.example.entity.MyCollectList">
+        select * from mycollectlist where uid = #{uid}
+    </select>
+<!--    创建我的歌单-->
+    <update id="createNewList">
+        insert into mylist(listName,songNum,created,uid) values (#{listName},0,#{created},#{uid})
+    </update>
+<!--    获得我的歌单-->
+    <select id="countMyList" resultType="java.lang.Integer">
+        select  count(*) from  mylist
+    </select>
+    <select id="getAllList" resultType="com.example.entity.MyList">
+        select * from mylist where uid = #{uid}
+    </select>
+
+
+
+<!--    删除相同的最近播放，保存最近的一次，更新键值使保持自增-->
+    <update id="updateIdBySongId">
+        ALTER  TABLE  recentplaymusic DROP id;
+        ALTER  TABLE  recentplaymusic ADD id mediumint(6) PRIMARY KEY NOT NULL AUTO_INCREMENT FIRST
+    </update>
+    <delete id="deleteSameBySongId">
+       DELETE FROM  recentplaymusic  WHERE songId=#{songId}
+    </delete>
+
+<!--    也是查找一首歌，但传入的是对象-->
+    <select id="findPlayedBySongId" resultType="com.example.entity.UserPlayMusic">
+        select * from recentplaymusic where songId = #{songId}  and uid = #{uid}
+    </select>
+
+<!--    显示所有最近播放-->
+    <select id="findPlayedMusic" parameterType="java.lang.Long" resultType="com.example.entity.Song">
+        select  s.songId,s.songTitle,s.singerName,s.recordName
+        from  music163_song_avail s inner join recentplaymusic r
+        on s.songId = r.songId
+        WHERE r.uid  = #{uid}
+        ORDER BY r.playTime desc
+    </select>
+    <select id="countPlayedMusic" resultType="java.lang.Integer">
+        select  count(*) from  recentplaymusic where uid = #{uid}
+    </select>
+
+<!--    查找某一songId的歌，不存在则代表删除成功-->
+    <select id="findOnePlayedBySongId" resultType="com.example.entity.UserPlayMusic">
+        select * from recentplaymusic where songId = #{songId}
+    </select>
+
+</mapper>

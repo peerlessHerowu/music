@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.SingerDao">
+<!--    查询id在一定范围的歌手-->
+    <select id="findBySomeId" parameterType="java.lang.Long" resultType="com.example.entity.Singer">
+        SELECT * FROM music163_singer_avail where id BETWEEN #{id1} AND  #{id2}
+    </select>
+    <select id="findById" parameterType="java.lang.String" resultType="com.example.entity.Singer">
+        SELECT * from music163_singer_avail where  singerId = #{singerId}
+    </select>
+
+<!--    随机查询一定范围的歌手-->
+    <select id="findAll" resultType="com.example.entity.Singer">
+             SELECT * from music163_singer_avail where   id &lt; 10000
+    </select>
+    <select id="countAll" resultType="java.lang.Integer">
+        select count(*) from music163_singer_avail
+    </select>
+    <select id="findAlls" resultType="com.example.entity.Singer">
+        SELECT * from music163_singer_avail
+    </select>
+</mapper>

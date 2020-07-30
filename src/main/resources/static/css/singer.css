@@ -1,0 +1,17 @@
+.singer_name{
+    margin: 5px 0px 20px 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.singer_intro{
+    margin-top: 53px;
+    font-size: 20px;
+    font-family: "楷体", "楷体_GB2312";
+    text-indent: 2em;
+}
+/*歌手图片和名字*/
+
+
+.singer_msg{
+    margin-left: 100px;
+}

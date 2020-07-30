@@ -1,0 +1,40 @@
+
+<div class="row list_intro">
+    <div class="col-md-4">
+        <img style="width: 235px;height: 235px;margin-bottom: 48px" src="{{d.imgSrc}}">
+    </div>
+    <div class="col-md-7">
+        <div class="list_title">
+            <span>{{d.title}}</span>
+        </div>
+        <div class="list_create">
+            {{d.createName}}
+        </div>
+        <div class="list_create_time">
+            {{d.createTime}}
+        </div>
+        <div class="play_num">
+            <span style="font-weight: 600">播放量：</span>{{d.playNum}}
+        </div>
+        <div style="margin-top: -10px">
+            <span style="font-weight: 600;font-size: 18px">标签：</span><span style="font-size:18px ">{{d.sortName}}</span>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row list_song">
+    <table class="layui-hide" id="thisSortTable" lay-filter="thisSortTable" ></table>
+
+    <div style="display: none;" id="operateToolBar">
+        <!--                播放/暂停（layui-icon-pause）-->
+        <a class="layui-icon layui-icon-play" lay-event="play"></a>
+        <!--                下载-->
+        <a class="layui-icon layui-icon-download-circle" lay-event="download"></a>
+        <a class="layui-icon layui-icon-rate" lay-event="collect"></a>
+
+    </div>
+
+</div>
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.SongListDao">
+
+    <select id="findAll" resultType="java.lang.String">
+		SELECT * FROM music163_list_avail AS list	WHERE list.id &lt; 10000  group by listId
+     </select>
+	<select id="findBySomeId" parameterType="java.lang.Long" resultType="com.example.entity.SongList">
+			SELECT * FROM music163_list_avail where id BETWEEN #{id1} AND  #{id2} group by listId
+	</select>
+	<select id="findById" parameterType="java.lang.String" resultType="com.example.entity.SongList">
+			SELECT * FROM music163_list_avail where listId = #{listId} group by listId
+	</select>
+
+
+</mapper>

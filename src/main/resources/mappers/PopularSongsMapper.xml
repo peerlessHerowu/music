@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.PopularSongsDao">
+
+    <select id="findPopularSongsBySingerId" parameterType="java.lang.String" resultType="com.example.entity.PopularSongs">
+        select * from music163_song_avail where singerId=#{singerId}
+    </select>
+    <select id="countBySingerId" parameterType="java.lang.String" resultType="java.lang.Integer">
+         SELECT  count(singerId)   FROM  music163_song_avail  WHERE  singerId = #{singerId}
+    </select>
+
+    <select id="getCarousel" resultType="com.example.entity.Carousel">
+         SELECT  * FROM  slide_show
+    </select>
+</mapper>
