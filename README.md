@@ -6,7 +6,7 @@
 　　基于Spring Boot+MyBatis和前端框架layui实现的音乐网站，内含近两万条歌单，各类歌单的歌曲数量共两百二十万首，六万多张专辑，这些数据来源于网易云。该网站包含歌曲、歌单管理，列表播放和搜索歌曲等功能。
  
 ## 项目架构
-　　Spring Boot+SSM+HTML+CSS+JS+JQuery+Ajax+Layui+MySQL+Redis
+　　Spring Boot+MyBatis+HTML+CSS+JS+JQuery+Ajax+Layui+MySQL+Redis
 
 ## 项目内容
 ### 登录和注册
